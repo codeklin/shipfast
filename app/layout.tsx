@@ -5,7 +5,6 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Ship Fast With AI | Stop just using AI. Start building with it.',
   description: 'A practical three-day AI-assisted app-building training for independent builders in Nigeria.',
-  generator: 'v0.app',
   openGraph: {
     title: 'Ship Fast With AI',
     description: 'Turn real problems into working websites and web apps with AI-assisted development.',
@@ -13,20 +12,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon_io/favicon.ico' },
     ],
-    apple: '/apple-icon.png',
+    apple: '/favicon_io/apple-touch-icon.png',
   },
 }
 
