@@ -3,9 +3,14 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Ship Fast With AI — Stop just using AI. Start building with it.',
+  description: 'A practical three-day AI-assisted app-building training for independent builders in Nigeria.',
   generator: 'v0.app',
+  openGraph: {
+    title: 'Ship Fast With AI',
+    description: 'Turn real problems into working websites and web apps with AI-assisted development.',
+    type: 'website',
+  },
   icons: {
     icon: [
       {
