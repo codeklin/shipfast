@@ -17,8 +17,28 @@ Never use workflows or launch workflow agents for this project. Work directly us
 - Styling: Tailwind CSS v4 with shadcn/ui (base-nova style)
 - Package manager: pnpm
 - Key pages: `/` (main landing), `/about`, `/privacy`, `/terms`
-- Shared components live in `components/` (e.g. `site-header.tsx`)
+- Shared components live in `components/` (e.g. `site-header.tsx`, `lead-form.tsx`)
 - Public assets in `public/`, favicon set in `public/favicon_io/`
+- Database: Supabase (`@supabase/supabase-js`), client in `lib/supabase.ts`
+- Server actions in `app/actions/`
+
+## Supabase: leads table
+
+Run this SQL in your Supabase SQL editor to create the leads table:
+
+```sql
+create table leads (
+  id uuid primary key default gen_random_uuid(),
+  first_name text not null,
+  email text not null unique,
+  whatsapp text not null,
+  created_at timestamptz default now()
+);
+
+-- Only allow inserts from the anon key (no reads/updates/deletes from client)
+alter table leads enable row level security;
+create policy "Insert only" on leads for insert with check (true);
+```
 
 ## Conventions
 
