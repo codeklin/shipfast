@@ -37,6 +37,7 @@ export function SiteHeader() {
           <Link href="/#sprint">The sprint</Link>
           <Link href="/#details">Details</Link>
           <Link href="/about">About</Link>
+          <Link href="/1on1" className="border border-white/30 px-4 py-2 text-white/80 hover:border-white hover:text-white">1-on-1 Session</Link>
           <Link href="/#community" className="border border-[#e4fb4f] px-4 py-2 text-[#e4fb4f]">Join community</Link>
         </nav>
         <button
@@ -78,6 +79,9 @@ export function SiteHeader() {
             </Link>
             <Link href="/about" onClick={() => setMenuOpen(false)} className="group border-y border-[#17181d]/25 py-5 text-5xl font-bold leading-none tracking-[-0.07em] transition-all hover:pl-4 sm:text-7xl">
               <span className="mr-3 align-top font-mono text-xs tracking-normal opacity-50">04</span>About <ArrowUpRight className="inline-block size-8 opacity-0 transition-opacity group-hover:opacity-100 sm:size-12" />
+            </Link>
+            <Link href="/1on1" onClick={() => setMenuOpen(false)} className="group border-b border-[#17181d]/25 py-5 text-5xl font-bold leading-none tracking-[-0.07em] transition-all hover:pl-4 sm:text-7xl">
+              <span className="mr-3 align-top font-mono text-xs tracking-normal opacity-50">05</span>1-on-1 <ArrowUpRight className="inline-block size-8 opacity-0 transition-opacity group-hover:opacity-100 sm:size-12" />
             </Link>
           </div>
           <div className="mt-8 flex items-center gap-4">
