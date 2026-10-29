@@ -2,7 +2,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import Link from 'next/link'
 
-const WHATSAPP_1ON1_URL = 'https://wa.me/2347031098097'
+const PAYMENT_OR_WHATSAPP_LINK = 'https://wa.me/2347031098097'
 
 const benefits = [
   {
@@ -61,21 +61,53 @@ export default function OneOnOnePage() {
           <p className="mt-8 max-w-xl text-xl font-medium leading-relaxed text-white/75">
             A focused session with Olajide over WhatsApp. Bring your idea, your project, or your confusion. Leave with a clear next step.
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+
+          {/* Price block */}
+          <div className="mt-10 max-w-xl border border-white/20 p-6">
+            <div className="grid grid-cols-2 gap-4 border-b border-white/15 pb-6 sm:grid-cols-[1fr_auto]">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">One day session</p>
+                <p className="mt-2 text-3xl font-bold text-[#e4fb4f]">₦20,000</p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">Two days</p>
+                <p className="mt-2 text-3xl font-bold text-[#e4fb4f]">₦35,000</p>
+              </div>
+            </div>
+            <p className="mt-5 text-lg font-medium leading-relaxed text-white/70">
+              This is your project, your stack and your questions, not a curriculum.
+            </p>
+            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.13em] text-[#7c57a0]">
+              Credited toward the 3-day sprint if you join within 7 days of your session.
+            </p>
+            <div className="mt-5 flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-[#e4fb4f]" />
+              <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-white/50">
+                Four sessions a week, booked in order.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href={WHATSAPP_1ON1_URL}
+              href={PAYMENT_OR_WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-3 bg-[#e4fb4f] px-6 py-4 text-sm font-bold text-[#17181d]"
             >
-              Book a session on WhatsApp <ArrowUpRight size={16} />
+              Book a session, ₦20,000 <ArrowUpRight size={16} />
             </a>
-            <Link href="/#community" className="inline-flex items-center justify-center gap-3 border border-white/25 px-6 py-4 text-sm font-bold">
-              Or join the group sprint
-            </Link>
+            <a
+              href={PAYMENT_OR_WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-3 border border-white/25 px-6 py-4 text-sm font-bold"
+            >
+              Ask a question first <ArrowUpRight size={16} />
+            </a>
           </div>
           <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.12em] text-white/40">
-            Via WhatsApp · No booking form · Just message directly
+            Transfer payment first · Send receipt on WhatsApp · Time confirmed within 24 hours
           </p>
         </div>
       </section>
@@ -128,16 +160,28 @@ export default function OneOnOnePage() {
           <h2 className="mt-5 text-5xl font-bold leading-[.92] tracking-[-0.06em] sm:text-6xl">Simple and direct.</h2>
           <div className="mt-16 border-y border-[#17181d]/15">
             {[
-              ['Message me on WhatsApp', 'Send a message to +234 703 109 8097 with a short description of what you want to work on.'],
-              ['We agree on a time', 'I will respond and we pick a time that works for both of us, usually within 24 to 48 hours.'],
-              ['We get to work', 'The session runs over WhatsApp voice or video. No software to install, no meeting links to chase.'],
-              ['You leave with a clear next step', 'Every session ends with something concrete: a decision made, a bug fixed, a plan written, a direction confirmed.'],
+              [
+                'Transfer the session fee',
+                'Transfer ₦20,000 for one day or ₦35,000 for two days to:\n\nOlajide Igbalaye · Opay · 7031098097',
+              ],
+              [
+                'Send the receipt on WhatsApp',
+                'Screenshot or forward your transfer receipt to +234 703 109 8097. Include a short line on what you want to work on.',
+              ],
+              [
+                'Get a time back within 24 hours',
+                'I confirm the session and send a time that works. Four sessions run each week, booked in the order payment is received.',
+              ],
+              [
+                'We get to work',
+                'The session runs over WhatsApp voice or video. No software to install, no meeting links to chase. Every session ends with something concrete.',
+              ],
             ].map(([title, body], i) => (
               <article key={i} className="grid gap-5 border-b border-[#17181d]/15 py-8 last:border-b-0 sm:grid-cols-[110px_1fr] sm:items-start">
                 <span className="font-mono text-xs text-[#7c57a0]">0{i + 1} /</span>
                 <div className="grid gap-3 sm:grid-cols-[.8fr_1fr]">
                   <h3 className="text-xl font-bold tracking-tight">{title}</h3>
-                  <p className="text-lg font-medium leading-relaxed text-[#55565b]">{body}</p>
+                  <p className="whitespace-pre-line text-lg font-medium leading-relaxed text-[#55565b]">{body}</p>
                 </div>
               </article>
             ))}
@@ -153,19 +197,35 @@ export default function OneOnOnePage() {
             One conversation can change the whole direction.
           </h2>
           <p className="mt-8 max-w-xl text-xl font-medium">
-            No form. No waiting room. Just message me directly on WhatsApp and we will take it from there.
+            Transfer the fee, send the receipt, and get a confirmed time back within 24 hours.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
-              href={WHATSAPP_1ON1_URL}
+              href={PAYMENT_OR_WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-3 bg-[#17181d] px-6 py-4 text-sm font-bold text-[#e4fb4f]"
             >
-              Message Olajide on WhatsApp <ArrowUpRight size={16} />
+              Book a session, ₦20,000 <ArrowUpRight size={16} />
             </a>
-            <Link href="/" className="inline-flex items-center gap-3 border border-[#17181d] px-6 py-4 text-sm font-bold">
-              Back to Ship Fast With AI
+            <a
+              href={PAYMENT_OR_WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 border border-[#17181d] px-6 py-4 text-sm font-bold"
+            >
+              Ask a question first <ArrowUpRight size={16} />
+            </a>
+          </div>
+
+          {/* Free session link */}
+          <div className="mt-12 border-t border-[#17181d]/20 pt-8">
+            <p className="text-base font-medium text-[#17181d]/60">Not ready to pay yet?</p>
+            <Link
+              href="/#pdf"
+              className="mt-2 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#17181d] underline underline-offset-4"
+            >
+              Register free for the 7 November session <ArrowUpRight size={12} />
             </Link>
           </div>
         </div>

@@ -13,6 +13,11 @@ out/
 .env.example
 # To share the template, use .env.example.template or document vars in README/AGENTS.md
 
+# PDF assets — the other three parts are not for download yet
+public/downloads/2_*.pdf
+public/downloads/3_*.pdf
+public/downloads/4_*.pdf
+
 # Vercel
 .vercel/
 

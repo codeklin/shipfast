@@ -17,13 +17,30 @@ function FieldError({ message }: { message?: string }) {
   )
 }
 
-export function LeadForm() {
+interface LeadFormProps {
+  submitLabel?: string
+  whatsappHint?: string
+}
+
+export function LeadForm({
+  submitLabel = 'Get Access to the Community',
+  whatsappHint = 'Used only to add you to the course WhatsApp group',
+}: LeadFormProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const [isPending, startTransition] = useTransition()
   const [success, setSuccess] = useState(false)
   const [alreadyRegistered, setAlreadyRegistered] = useState(false)
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const [globalError, setGlobalError] = useState<string | null>(null)
+
+  function triggerPdfDownload() {
+    const a = document.createElement('a')
+    a.href = '/api/pdf'
+    a.download = '50-AI-Ideas-Part-1.pdf'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -37,6 +54,8 @@ export function LeadForm() {
         setAlreadyRegistered(result.alreadyRegistered ?? false)
         setSuccess(true)
         formRef.current?.reset()
+        // Trigger PDF download immediately on success
+        triggerPdfDownload()
       } else {
         if (result.field) {
           setFieldErrors({ [result.field]: result.error })
@@ -54,21 +73,30 @@ export function LeadForm() {
           {alreadyRegistered ? 'Already registered' : 'You are in'}
         </p>
         <p className="mt-3 text-xl font-bold">
-          {alreadyRegistered ? 'You signed up before.' : 'Welcome to the community.'}
+          {alreadyRegistered ? 'You registered before.' : 'Registration confirmed.'}
         </p>
         <p className="mt-2 text-lg font-medium leading-relaxed text-white/70">
           {alreadyRegistered
-            ? 'We already have your details. Here is your link to join the WhatsApp group.'
-            : 'Tap the button below to join the WhatsApp group and get updates directly.'}
+            ? 'We already have your details. Your PDF is downloading and your WhatsApp link is below.'
+            : 'Your PDF is downloading now. Join the WhatsApp community below to stay updated.'}
         </p>
-        <a
-          href={WHATSAPP_COMMUNITY_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 inline-flex items-center gap-3 bg-[#e4fb4f] px-5 py-4 text-sm font-bold text-[#17181d]"
-        >
-          Join the WhatsApp Community <ArrowUpRight size={16} />
-        </a>
+        <div className="mt-6 flex flex-col gap-3">
+          <a
+            href={WHATSAPP_COMMUNITY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-3 bg-[#e4fb4f] px-5 py-4 text-sm font-bold text-[#17181d]"
+          >
+            Join the WhatsApp Community <ArrowUpRight size={16} />
+          </a>
+          <button
+            type="button"
+            onClick={triggerPdfDownload}
+            className="inline-flex items-center gap-3 border border-[#e4fb4f] px-5 py-4 text-sm font-bold text-[#e4fb4f]"
+          >
+            Download PDF again <ArrowUpRight size={16} />
+          </button>
+        </div>
       </div>
     )
   }
@@ -76,7 +104,6 @@ export function LeadForm() {
   return (
     <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-
         <div className="flex flex-col gap-1">
           <label htmlFor="lead-firstName" className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/55">
             First name <span className="text-[#e4fb4f]">*</span>
@@ -89,7 +116,6 @@ export function LeadForm() {
             required
             placeholder="Tunde"
             aria-invalid={!!fieldErrors.firstName}
-            aria-describedby={fieldErrors.firstName ? 'err-firstName' : undefined}
             className={`border bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none ${
               fieldErrors.firstName ? 'border-red-400' : 'border-white/20 focus:border-[#e4fb4f]'
             }`}
@@ -109,14 +135,12 @@ export function LeadForm() {
             required
             placeholder="tunde@example.com"
             aria-invalid={!!fieldErrors.email}
-            aria-describedby={fieldErrors.email ? 'err-email' : undefined}
             className={`border bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none ${
               fieldErrors.email ? 'border-red-400' : 'border-white/20 focus:border-[#e4fb4f]'
             }`}
           />
           <FieldError message={fieldErrors.email} />
         </div>
-
       </div>
 
       <div className="flex flex-col gap-1">
@@ -131,15 +155,12 @@ export function LeadForm() {
           required
           placeholder="+234 800 000 0000"
           aria-invalid={!!fieldErrors.whatsapp}
-          aria-describedby={fieldErrors.whatsapp ? 'err-whatsapp' : undefined}
           className={`border bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none ${
             fieldErrors.whatsapp ? 'border-red-400' : 'border-white/20 focus:border-[#e4fb4f]'
           }`}
         />
         <FieldError message={fieldErrors.whatsapp} />
-        <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/35">
-          Used only to add you to the course WhatsApp group
-        </p>
+        <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/35">{whatsappHint}</p>
       </div>
 
       {globalError && (
@@ -153,7 +174,7 @@ export function LeadForm() {
         disabled={isPending}
         className="inline-flex w-full items-center justify-center gap-3 bg-[#e4fb4f] px-5 py-4 text-sm font-bold text-[#17181d] disabled:opacity-60 sm:w-auto"
       >
-        {isPending ? 'Submitting...' : 'Get Access to the Community'}
+        {isPending ? 'Submitting...' : submitLabel}
         {!isPending && <ArrowUpRight size={16} />}
       </button>
     </form>
