@@ -11,9 +11,6 @@ const SITE_CONFIG = {
   WHATSAPP_DIRECT_MESSAGE_URL: 'https://wa.me/2347031098097',
   PAYMENT_URL: '',
   PAYMENT_METHOD_LABEL: 'Direct Bank Transfer',
-  COURSE_PRICE_FOUNDING: '₦15,000',
-  COURSE_PRICE_STANDARD: '₦25,000',
-  COURSE_PRICE_LABEL: '₦15,000 founding cohort · ₦25,000 standard',
   SESSION_DATE: '7 November 2026',
   SESSION_TIME: '7:00 PM to 8:30 PM',
   COURSE_START_DATE: '13 November 2026',
@@ -107,7 +104,7 @@ const faqs = [
   ['Will my project be hosted for free?', 'We will explore eligible free tiers, but providers have limits and their terms can change.'],
   ['Can this help me offer services to clients?', 'It can help you build a foundation and examples of your work. It does not guarantee clients or income.'],
   ['Does the training guarantee income or a remote job?', 'No. There are no guarantees of employment, freelance clients, revenue or income.'],
-  ['What are the dates and enrollment terms?', `The free session is on ${SITE_CONFIG.SESSION_DATE}. The paid 3-day sprint runs ${SITE_CONFIG.COURSE_START_DATE} to ${SITE_CONFIG.COURSE_END_DATE}. Payment and refund terms will be confirmed before sprint enrollment opens.`],
+  ['What are the dates and enrollment terms?', `The free session is on ${SITE_CONFIG.SESSION_DATE}. The paid 3-day sprint runs ${SITE_CONFIG.COURSE_START_DATE} to ${SITE_CONFIG.COURSE_END_DATE}. Sprint pricing and enrollment details will be shared with registered attendees on WhatsApp.`],
 ]
 
 const pdfParts = [
@@ -304,7 +301,7 @@ export default function Page() {
       {/* ── Sprint overview ── */}
       <section id="sprint" className="scroll-reveal border-b border-white/15 bg-[#17181d] px-5 py-24 lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e4fb4f]">Step two / paid sprint</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e4fb4f]">What comes next</p>
           <h2 className="mt-5 max-w-3xl text-5xl font-bold leading-[.92] tracking-[-0.06em] sm:text-7xl">Three days.<br /><span className="text-[#e4fb4f]">One practical</span> building sprint.</h2>
           <div className="mt-20 border-y border-white/15">
             {[
@@ -425,60 +422,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ── Pricing ── */}
-      <section id="pricing" className="bg-[#fbfbf8] px-5 py-24 text-[#17181d] lg:px-10 lg:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6d6e72]">Pricing / 3-day sprint · {SITE_CONFIG.COURSE_START_DATE}</p>
-              <h2 className="mt-6 text-5xl font-bold leading-[.93] tracking-[-0.06em] sm:text-6xl">The sprint opens to session attendees first.</h2>
-              <p className="mt-7 text-lg font-medium leading-relaxed text-[#55565b]">
-                Attend the free session on 7 November. Sprint seats are offered to attendees before public registration opens.
-              </p>
-              <div className="mt-6 space-y-2">
-                <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#6d6e72]">Sprint pricing</p>
-                <p className="text-lg font-bold text-[#17181d]">Founding cohort: <span className="text-[#668c19]">{SITE_CONFIG.COURSE_PRICE_FOUNDING}</span> <span className="font-normal text-[#65666b]">(first 20 seats)</span></p>
-                <p className="text-lg font-bold text-[#17181d]">Standard: <span className="font-normal text-[#65666b]">{SITE_CONFIG.COURSE_PRICE_STANDARD} after</span></p>
-              </div>
-              <a href="#pdf" className="mt-8 inline-flex items-center gap-3 bg-[#17181d] px-5 py-4 text-sm font-bold text-[#e4fb4f]">
-                Register free for 7 November <ArrowUpRight size={16} />
-              </a>
-              <a
-                href={SITE_CONFIG.WHATSAPP_DIRECT_MESSAGE_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-flex items-center gap-3 border border-[#17181d]/30 px-5 py-4 text-sm font-bold text-[#17181d]"
-              >
-                Book a one-on-one session <ArrowUpRight size={16} />
-              </a>
-            </div>
-            <div className="border-y border-[#17181d]/15">
-              <div className="grid gap-5 border-b border-[#17181d]/15 py-6 sm:grid-cols-2">
-                <div>
-                  <p className="font-mono text-[10px] uppercase text-[#6d6e72]">Format</p>
-                  <p className="mt-2 font-bold">3-day practical training</p>
-                </div>
-                <div>
-                  <p className="font-mono text-[10px] uppercase text-[#6d6e72]">Schedule</p>
-                  <p className="mt-2 font-bold">{SITE_CONFIG.COURSE_START_DATE} to {SITE_CONFIG.COURSE_END_DATE}</p>
-                  <p className="mt-1 text-sm text-[#65666b]">{SITE_CONFIG.COURSE_TIME}</p>
-                </div>
-              </div>
-              <div className="py-6">
-                <p className="font-mono text-[10px] uppercase text-[#6d6e72]">Sprint enrollment terms</p>
-                <p className="mt-3 text-lg font-medium leading-relaxed text-[#55565b]">
-                  {SITE_CONFIG.ENROLLMENT_DEADLINE ? `Enroll by ${SITE_CONFIG.ENROLLMENT_DEADLINE}. ` : ''}
-                  {SITE_CONFIG.REFUND_TERMS || 'Refund terms to be confirmed before enrollment.'}
-                </p>
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.12em] text-[#6d6e72]">
-                  Payment method: {SITE_CONFIG.PAYMENT_METHOD_LABEL}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── FAQ ── */}
       <section className="bg-[#e9c7f5] px-5 py-24 text-[#17181d] lg:px-10 lg:py-32">
         <div className="mx-auto max-w-4xl">
@@ -542,7 +485,7 @@ export default function Page() {
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-3 font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
             <a href="#story">About</a>
-            <a href="#details">Curriculum</a>
+            <a href="#sprint">The sprint</a>
             <a href="#live-session">Free session</a>
             <a href={SITE_CONFIG.PRIVACY_URL}>Privacy</a>
             <a href={SITE_CONFIG.TERMS_URL}>Terms</a>
