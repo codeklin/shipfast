@@ -111,10 +111,10 @@ const faqs = [
 ]
 
 const pdfParts = [
-  ['Problems worth solving', 'Ideas grounded in real friction people already experience. Not novelty for its own sake.'],
-  ['Tools you can build this weekend', 'Scoped to a single sitting. Each one has a clear use case and a realistic path to a first version.'],
-  ['Ideas for your existing business', 'Apply AI to processes, communication or delivery you already run. No pivot required.'],
-  ['Ideas that can become a product', 'Starting points with growth potential. Narrow enough to build, broad enough to matter.'],
+  ['What is in the guide', '50 specific ways to make money using AI tools. Each one is a direction, not a guarantee.'],
+  ['61 pages', 'Part one of a four-part series. Practical and direct, no filler.'],
+  ['Who it is for', 'Anyone who wants to understand what is actually possible with AI before committing to a course or a tool.'],
+  ['How to use it', 'Read it before the free session on 7 November. Come with the ones that fit your situation.'],
 ]
 
 const liveSessionBullets = [
@@ -154,7 +154,7 @@ export default function Page() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
           <div>
             <div className="mb-7 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#e4fb4f]">
-              <span className="h-px w-8 bg-[#e4fb4f]" /> Free live session / {SITE_CONFIG.SESSION_DATE}
+              <span className="h-px w-8 bg-[#e4fb4f]" /> Free live session · {SITE_CONFIG.SESSION_DATE}
             </div>
             <h1 className="max-w-2xl text-[clamp(3.5rem,8vw,7.8rem)] font-bold leading-[.88] tracking-[-0.075em]">
               Stop just using AI.<br /><span className="text-[#e4fb4f]">Start building</span><br />with it.
@@ -163,20 +163,17 @@ export default function Page() {
               You have a business idea, a side hustle, or a problem you keep explaining in WhatsApp chats. Learn how to turn it into a working website or web app, even if you are starting from zero.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <ConfiguredLink
-                href={SITE_CONFIG.PAYMENT_URL || '#pdf'}
-                className="inline-flex items-center justify-center gap-3 bg-[#e4fb4f] px-5 py-4 text-sm font-bold text-[#17181d]"
-              >
-                Register free for the {SITE_CONFIG.SESSION_DATE} session <ArrowUpRight size={16} />
-              </ConfiguredLink>
+              <a href="#pdf" className="inline-flex items-center justify-center gap-3 bg-[#e4fb4f] px-5 py-4 text-sm font-bold text-[#17181d]">
+                Register free <ArrowUpRight size={16} />
+              </a>
               <a href="#pdf" className="inline-flex items-center justify-center gap-3 border border-white/25 px-5 py-4 text-sm font-bold">
                 Get the 50 AI Ideas PDF <ArrowDownRight size={16} />
               </a>
             </div>
-            <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
-              <span className="text-[#e4fb4f]">Free live session, {SITE_CONFIG.SESSION_DATE}.</span>
-              <span aria-hidden="true">·</span>
-              <span>Paid 3-day sprint opens to attendees first.</span>
+            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
+              <span className="text-[#e4fb4f]">Free · 30 seats · Saturday 7 November.</span>
+              <span className="mx-3" aria-hidden="true">·</span>
+              <span>Paid sprint opens to attendees first.</span>
             </p>
           </div>
           <div className="pt-4 lg:pt-14">
@@ -196,23 +193,20 @@ export default function Page() {
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e4fb4f]">Step one / free</p>
               <h2 className="mt-5 text-4xl font-bold leading-[.93] tracking-[-0.06em] sm:text-5xl">
-                Free live session.<br />Saturday {SITE_CONFIG.SESSION_DATE},<br />{SITE_CONFIG.SESSION_TIME}.
+                Free live session.<br />Saturday 7 November,<br />{SITE_CONFIG.SESSION_TIME}.
               </h2>
               <p className="mt-6 text-lg font-medium leading-relaxed text-white/65">
                 Watch one complete idea get built and deployed in real time. No slides. No theory. Just a screen, a problem, and ninety minutes.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4 font-mono text-[10px] uppercase tracking-[0.12em]">
+              <div className="mt-8 flex flex-wrap gap-3 font-mono text-[10px] uppercase tracking-[0.12em]">
                 <span className="border border-white/20 px-3 py-2 text-white/60">No charge</span>
                 <span className="border border-white/20 px-3 py-2 text-white/60">30 seats</span>
                 <span className="border border-white/20 px-3 py-2 text-white/60">Recording for registered attendees only</span>
               </div>
-              <a href="#pdf" className="mt-8 inline-flex items-center gap-3 bg-[#e4fb4f] px-5 py-4 text-sm font-bold text-[#17181d]">
-                Register free <ArrowUpRight size={16} />
-              </a>
             </div>
             <div className="border-t border-white/15 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e4fb4f]">What you watch live</p>
-              <ul className="mt-6 space-y-0 divide-y divide-white/10">
+              <ul className="mt-6 divide-y divide-white/10">
                 {liveSessionBullets.map((item, i) => (
                   <li key={i} className="flex items-start gap-4 py-4">
                     <span className="mt-0.5 shrink-0 font-mono text-[10px] text-[#e4fb4f]">0{i + 1}</span>
@@ -225,17 +219,17 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ── 50 AI Ideas PDF ── */}
+      {/* ── 50 AI Ideas PDF + registration form ── */}
       <section id="pdf" className="scroll-reveal border-b border-white/15 bg-[#fbfbf8] px-5 py-24 text-[#17181d] lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6d6e72]">Free resource</p>
               <h2 className="mt-5 text-4xl font-bold leading-[.93] tracking-[-0.06em] sm:text-5xl">
-                50 AI Ideas,<br />in four parts.
+                50 Ways to Make Money with AI.
               </h2>
               <p className="mt-6 text-lg font-medium leading-relaxed text-[#55565b]">
-                A PDF that gives you a starting point, not a promise. Free. Sent to you on WhatsApp when you register for the {SITE_CONFIG.SESSION_DATE} session.
+                A 61-page guide. Part one of four. Free. Sent on WhatsApp when you register for the 7 November session.
               </p>
               <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.12em] text-[#7c57a0]">
                 No direct download. Registration required.
@@ -257,32 +251,7 @@ export default function Page() {
               <LeadForm
                 submitLabel="Register free and get the PDF"
                 whatsappHint="We send the PDF to this number on WhatsApp"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Community form ── */}
-      <section id="community" className="border-b border-white/15 bg-[#17181d] px-5 py-24 lg:px-10 lg:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e4fb4f]">Join the community</p>
-              <h2 className="mt-5 text-4xl font-bold leading-[.93] tracking-[-0.06em] sm:text-5xl">Already registered? Join the WhatsApp group.</h2>
-              <p className="mt-6 text-lg font-medium leading-relaxed text-white/65">
-                Drop your details and we will send you the WhatsApp group link right away. No spam, just session updates and the sprint enrollment link when it goes live.
-              </p>
-              <ul className="mt-8 space-y-3 font-mono text-[10px] uppercase tracking-[0.12em] text-white/50">
-                <li className="flex items-center gap-3"><span className="text-[#e4fb4f]">+</span> Early sprint enrollment access</li>
-                <li className="flex items-center gap-3"><span className="text-[#e4fb4f]">+</span> Session date confirmations</li>
-                <li className="flex items-center gap-3"><span className="text-[#e4fb4f]">+</span> Direct line to the instructor</li>
-              </ul>
-            </div>
-            <div>
-              <LeadForm
-                submitLabel="Get access to the community"
-                whatsappHint="Used to add you to the course WhatsApp group"
+                variant="light"
               />
             </div>
           </div>
@@ -341,7 +310,7 @@ export default function Page() {
             {[
               ['01', 'Name the pressure', 'Start with the problem that keeps costing you time, customers, or confidence. It could be a business process, a community need, or an idea you have carried for too long.'],
               ['02', 'Make it useful', 'Use AI-assisted development to create a clear first version, then learn enough about the structure to make sensible decisions.'],
-              ['03', 'Put it in people\'s hands', 'Test it with real people, deploy what works, and leave with a better answer than another unfinished idea.'],
+              ['03', "Put it in people's hands", 'Test it with real people, deploy what works, and leave with a better answer than another unfinished idea.'],
             ].map(([n, t, c]) => (
               <article key={n} className="grid gap-5 border-b border-white/15 py-8 last:border-b-0 sm:grid-cols-[110px_1fr] sm:items-start">
                 <span className="font-mono text-xs text-[#e4fb4f]">{n} /</span>
@@ -456,23 +425,23 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ── Pricing / step two ── */}
-      <section className="bg-[#fbfbf8] px-5 py-24 text-[#17181d] lg:px-10 lg:py-32">
+      {/* ── Pricing ── */}
+      <section id="pricing" className="bg-[#fbfbf8] px-5 py-24 text-[#17181d] lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6d6e72]">Step two / 3-day sprint · {SITE_CONFIG.COURSE_START_DATE}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6d6e72]">Pricing / 3-day sprint · {SITE_CONFIG.COURSE_START_DATE}</p>
               <h2 className="mt-6 text-5xl font-bold leading-[.93] tracking-[-0.06em] sm:text-6xl">The sprint opens to session attendees first.</h2>
               <p className="mt-7 text-lg font-medium leading-relaxed text-[#55565b]">
-                Attend the free session on {SITE_CONFIG.SESSION_DATE}. Sprint seats are offered to attendees before public registration opens.
+                Attend the free session on 7 November. Sprint seats are offered to attendees before public registration opens.
               </p>
               <div className="mt-6 space-y-2">
                 <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#6d6e72]">Sprint pricing</p>
                 <p className="text-lg font-bold text-[#17181d]">Founding cohort: <span className="text-[#668c19]">{SITE_CONFIG.COURSE_PRICE_FOUNDING}</span> <span className="font-normal text-[#65666b]">(first 20 seats)</span></p>
-                <p className="text-lg font-bold text-[#17181d]">Standard: <span className="text-[#65666b] font-normal">{SITE_CONFIG.COURSE_PRICE_STANDARD} after</span></p>
+                <p className="text-lg font-bold text-[#17181d]">Standard: <span className="font-normal text-[#65666b]">{SITE_CONFIG.COURSE_PRICE_STANDARD} after</span></p>
               </div>
               <a href="#pdf" className="mt-8 inline-flex items-center gap-3 bg-[#17181d] px-5 py-4 text-sm font-bold text-[#e4fb4f]">
-                Register free for {SITE_CONFIG.SESSION_DATE} <ArrowUpRight size={16} />
+                Register free for 7 November <ArrowUpRight size={16} />
               </a>
               <a
                 href={SITE_CONFIG.WHATSAPP_DIRECT_MESSAGE_URL}
@@ -559,7 +528,7 @@ export default function Page() {
           <h2 className="mt-6 max-w-4xl text-5xl font-bold leading-[.9] tracking-[-0.07em] sm:text-8xl">Your idea is still an idea.<br />Let&apos;s change that.</h2>
           <p className="mt-8 text-2xl font-medium">Bring a problem. Learn a process. Build something real.</p>
           <a href="#pdf" className="mt-10 inline-flex items-center gap-3 border border-[#17181d] px-5 py-4 text-sm font-bold">
-            Register free for {SITE_CONFIG.SESSION_DATE} <ArrowUpRight size={16} />
+            Register free for 7 November <ArrowUpRight size={16} />
           </a>
         </div>
       </section>
