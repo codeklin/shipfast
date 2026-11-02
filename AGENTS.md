@@ -45,3 +45,7 @@ create policy "Insert only" on leads for insert with check (true);
 - All copy and UI text follows the no-em-dash rule above.
 - Use `next/link` for internal navigation, plain `<a>` for external links.
 - Icons are inline SVGs or lucide-react, not image files.
+
+## Supabase keep-alive
+
+A Vercel cron job at `app/api/keep-alive/route.ts` pings Supabase every 3 days to prevent the free tier project from pausing. It is protected by `CRON_SECRET` in `.env.local`. The schedule is defined in `vercel.json`. When adding new Supabase tables, this ping is sufficient — no changes needed.
