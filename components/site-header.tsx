@@ -38,7 +38,7 @@ export function SiteHeader() {
           <Link href="/#details">Details</Link>
           <Link href="/about">About</Link>
           <Link href="/1on1" className="border border-white/30 px-4 py-2 text-white/80 hover:border-white hover:text-white">1-on-1 Session</Link>
-          <Link href="/#community" className="border border-[#e4fb4f] px-4 py-2 text-[#e4fb4f]">Join community</Link>
+          <Link href="/#pdf" className="border border-[#e4fb4f] px-4 py-2 text-[#e4fb4f]">Join community</Link>
         </nav>
         <button
           type="button"
@@ -92,7 +92,7 @@ export function SiteHeader() {
               <XIcon /> @jidelence
             </a>
           </div>
-          <a href="/#community" onClick={() => setMenuOpen(false)} className="relative mt-5 inline-flex w-fit items-center gap-3 border-2 border-[#17181d] px-5 py-4 font-mono text-xs font-bold uppercase tracking-[0.12em]">
+          <a href="/#pdf" onClick={() => setMenuOpen(false)} className="relative mt-5 inline-flex w-fit items-center gap-3 border-2 border-[#17181d] px-5 py-4 font-mono text-xs font-bold uppercase tracking-[0.12em]">
             Join community <ArrowUpRight size={16} />
           </a>
         </nav>
